@@ -14,7 +14,6 @@ import {toast} from "react-toastify"
 import { addFileUrl, deleteFileUrl, getFilesByUserUrl } from "./apiUrl.api";
 
 export const getFilesByUser = async (token,userId ,dispatch) => {
-  console.log("id",userId)
   try {
     dispatch(getFilesByUserStart());
     const responce = await axios.get(`${getFilesByUserUrl}/${userId}`, {
@@ -60,11 +59,13 @@ export const addFile = async (file, token, dispatch) => {
         token: `blob ${token}`,
       },
     });
-    if (response.status == 200) {
-      alert(`save the code: ${response.data.code}`)
-      dispatch(addFileSuccess(response.data));
-      return response.data
+    if (response.status == 201) {
+      toast.info(`save the code: ${response.data.code}`)
+      const data =response.data
+      dispatch(addFileSuccess(data));
+      
     }
+    return response
   } catch (error) {
     dispatch(addFileFailed(error));
     console.error(error);

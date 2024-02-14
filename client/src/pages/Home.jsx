@@ -35,25 +35,32 @@ const Home = () => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("userId", currentUser._id);
-    await addFile(formData, currentUser.accessToken, dispatch);
-     
-    
-
-    fetchData();
+   const data= await addFile(formData, currentUser.accessToken, dispatch);
+     console.log(data)
   };
 
   const downloadFile = async (file) => {
     let code = prompt("Please enter code:");
     if (code == file.code) {
-      let url = `${baseUrl}/${file.path}`;
-      window.open(url, "_blank");
-      console.log(url);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = file.filename;
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
+//          // This should match the URL of the endpoint you set up in your Node.js server
+//   const url = `http://localhost:4000/api/file/download/${file.path}`;
+  
+//   // Create an anchor element and trigger a download
+//   const anchor = document.createElement('a');
+//   anchor.href = url;
+//   anchor.setAttribute('download', ''); // Optional: you can set a filename here
+//   document.body.appendChild(anchor);
+//   anchor.click();
+//   document.body.removeChild(anchor);
+    //   let url = `${baseUrl}/${file.path}`;
+    //   window.open(url, "_blank");
+    //   console.log(url);
+    //   const a = document.createElement("a");
+    //   a.href = url;
+    //   a.download = file.filename;
+    //   document.body.appendChild(a);
+    //   a.click();
+    //   window.URL.revokeObjectURL(url);
     } else {
       toast.error("code doesnot match");
     }

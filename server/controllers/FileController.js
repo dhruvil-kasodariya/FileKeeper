@@ -1,4 +1,5 @@
 const File = require("../models/File");
+const path =require("path")
 
 const router = require("express").Router();
 const { unlink } = require("node:fs/promises");
@@ -105,8 +106,24 @@ const deleteUserFile = async (req, res) => {
   }
 };
 
+const downloadFile =async (req, res) => {
+  // // Specify the path to the file you want to send
+  // const filePath = path.join(__dirname, req.params.toString());
+  // // Set the filename that the browser will see
+  // const fileName = 'downloadedFileName.ext'; // Change this to your preferred file name
+  // // Send the file
+  // res.download(filePath, fileName, (err) => {
+  //   if (err) {
+  //     // Handle error, but don't expose to the client
+  //     res.status(500).send('Error occurred, unable to download the file');
+  //     console.error(err);
+  //   }
+  // });
+}
+
 module.exports = {
   addFile,
   getUserFiles,
   deleteUserFile,
+  downloadFile
 };

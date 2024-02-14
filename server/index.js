@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -25,6 +26,7 @@ app.use(methodOverride("X-HTTP-Method-Override"));
 
 app.use("/api/auth", authRoute);
 app.use("/api/file",fileRoute)
+//app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.listen(process.env.PORT, () => {
   console.info(`server running at ${process.env.PORT}`);

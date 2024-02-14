@@ -23,7 +23,7 @@ export const addFileStart = () =>
   createAction(FILE_ACTION_TYPE.ADD_FILE_BY_USER_START);
 
 export const addFileSuccess = (file) =>
-  createAction(FILE_ACTION_TYPE.ADD_FILE_BY_USER_FAILED, file);
+  createAction(FILE_ACTION_TYPE.ADD_FILE_BY_USER_SUCCESS, file);
 
 export const addFileFailed = (error) =>
   createAction(FILE_ACTION_TYPE.ADD_FILE_BY_USER_FAILED, error);
