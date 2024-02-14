@@ -12,10 +12,10 @@ const registerUser = async (req, res) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Input validation
-    if (!username) return res.status(400).send({ message: "Enter User Name" });
+    if (!username) return res.status(400).send({ error: "Enter User Name" });
     if (!useremail || !emailRegex.test(useremail))
-      return res.status(400).send({ message: "Email is not Valid or Empty" });
-    if (!password) return res.status(400).send({ message: "Enter Password" });
+      return res.status(400).send({ error: "Email is not Valid or Empty" });
+    if (!password) return res.status(400).send({ error: "Enter Password" });
 
     // Encrypt the password
     const encryptedPassword = CryptoJS.AES.encrypt(
@@ -55,14 +55,14 @@ const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
   // Input validation
-  if (!username) return res.status(400).send({ message: "Enter User Name" });
-  if (!password) return res.status(400).send({ message: "Enter Password" });
+  if (!username) return res.status(400).send({ error: "Enter User Name" });
+  if (!password) return res.status(400).send({ error: "Enter Password" });
 
   try {
     // Find user by username
     const user = await User.findOne({ username: username });
 
-    if (!user) return res.status(401).json({ message: "User not found" });
+    if (!user) return res.status(401).json({ error: "User not found" });
 
     // Decrypt stored password
     const decryptPassword = CryptoJS.AES.decrypt(
@@ -72,7 +72,7 @@ const loginUser = async (req, res) => {
 
     //  Comparison of passwords
     if (decryptPassword !== req.body.password) {
-      res.status(401).send({ messege: "Wrong Password" });
+      res.status(401).send({ error: "Wrong Password" });
       return;
     }
 

@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const methodOverride = require("method-override");
 const authRoute =require("./routes/auth")
+const fileRoute =require("./routes/file")
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("X-HTTP-Method-Override"));
 
 app.use("/api/auth", authRoute);
+app.use("/api/file",fileRoute)
 
 app.listen(process.env.PORT, () => {
   console.info(`server running at ${process.env.PORT}`);
