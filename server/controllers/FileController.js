@@ -1,7 +1,7 @@
 const File = require("../models/File");
 
 const router = require("express").Router();
-const { unlink } = require('node:fs/promises');
+const { unlink } = require("node:fs/promises");
 
 // Function to generate a unique 6-digit code
 const generateUniqueCode = async () => {
@@ -24,7 +24,6 @@ const generateUniqueCode = async () => {
 const addFile = async (req, res) => {
   try {
     const { filename, path, mimetype, originalname, encoding, size } = req.file;
-
     // Generate a unique 6-digit code for the file
     const code = await generateUniqueCode();
 
@@ -80,7 +79,7 @@ const deleteUserFile = async (req, res) => {
 
     // Check if the file exists
     if (!getFile) {
-      console.log("here")
+      console.log("here");
       // If the file does not exist, send a 404 Not Found response
       return res.status(404).json({ error: "File Not Found" });
     }
@@ -94,21 +93,20 @@ const deleteUserFile = async (req, res) => {
       console.log(`Successfully deleted file ${getFile.path}`);
     } catch (error) {
       // Handle errors that occur during file deletion from the file system
-      console.error('Error deleting file:', error.message);
+      console.error("Error deleting file:", error.message);
     }
 
     // Send a success response indicating the file was deleted
     res.status(200).send({ message: "File Deleted" });
   } catch (error) {
     // Handle errors
-    console.error('Error:', error);
+    console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
-
 module.exports = {
   addFile,
   getUserFiles,
-  deleteUserFile
+  deleteUserFile,
 };

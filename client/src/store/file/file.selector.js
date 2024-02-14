@@ -1,0 +1,1 @@
+export const selectFileList = (state) => state.file.fileList;
