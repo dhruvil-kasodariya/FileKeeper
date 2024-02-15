@@ -29,7 +29,7 @@ function SignIn({ handleSwitch }) {
       try {
         await loginApi(userInfo, dispatch, navigate);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   };

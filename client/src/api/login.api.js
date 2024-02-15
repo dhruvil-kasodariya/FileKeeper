@@ -19,7 +19,7 @@ const loginApi = async (userData, dispatch, navigate) => {
     return responce;
   } catch (error) {
     dispatch(signInFailed(error));
-    console.log(error);
+    console.error(error);
   }
 };
 

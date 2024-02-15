@@ -80,7 +80,7 @@ const deleteUserFile = async (req, res) => {
 
     // Check if the file exists
     if (!getFile) {
-      console.log("here");
+
       // If the file does not exist, send a 404 Not Found response
       return res.status(404).json({ error: "File Not Found" });
     }
@@ -91,7 +91,7 @@ const deleteUserFile = async (req, res) => {
     // Delete the file from the file system
     try {
       await unlink(getFile.path); // Use unlink to delete the file from the file system
-      console.log(`Successfully deleted file ${getFile.path}`);
+     // console.log(`Successfully deleted file ${getFile.path}`);
     } catch (error) {
       // Handle errors that occur during file deletion from the file system
       console.error("Error deleting file:", error.message);
@@ -107,18 +107,7 @@ const deleteUserFile = async (req, res) => {
 };
 
 const downloadFile =async (req, res) => {
-  // // Specify the path to the file you want to send
-  // const filePath = path.join(__dirname, req.params.toString());
-  // // Set the filename that the browser will see
-  // const fileName = 'downloadedFileName.ext'; // Change this to your preferred file name
-  // // Send the file
-  // res.download(filePath, fileName, (err) => {
-  //   if (err) {
-  //     // Handle error, but don't expose to the client
-  //     res.status(500).send('Error occurred, unable to download the file');
-  //     console.error(err);
-  //   }
-  // });
+  res.status(200).download(req.body.path)
 }
 
 module.exports = {

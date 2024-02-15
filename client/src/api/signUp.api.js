@@ -19,7 +19,7 @@ const signUpApi = async (userData, dispatch, navigate) => {
     return responce;
   } catch (error) {
     dispatch(signUpFailed(error));
-    console.log(error);
+    console.error(error);
   }
 };
 

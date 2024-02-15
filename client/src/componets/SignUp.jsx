@@ -32,7 +32,7 @@ function SignUp({ handleSwitch }) {
       try {
         await signUpApi(user, dispatch, navigate);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   };

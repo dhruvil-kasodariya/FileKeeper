@@ -9,3 +9,5 @@ export const getFilesByUserUrl = `${baseUrl}/api/file/get-user-files`;
 export const deleteFileUrl = `${baseUrl}/api/file/delete-file`;
 
 export const addFileUrl = `${baseUrl}/api/file/add-file`;
+
+export const fileDownloadUrl =`${baseUrl}/api/file/download`

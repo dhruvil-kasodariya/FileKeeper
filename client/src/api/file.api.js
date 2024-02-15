@@ -11,7 +11,7 @@ import {
   getFilesByUserSuccess,
 } from "../store/file/file.action";
 import {toast} from "react-toastify"
-import { addFileUrl, deleteFileUrl, getFilesByUserUrl } from "./apiUrl.api";
+import { addFileUrl, deleteFileUrl, fileDownloadUrl, getFilesByUserUrl } from "./apiUrl.api";
 
 export const getFilesByUser = async (token,userId ,dispatch) => {
   try {
@@ -23,14 +23,14 @@ export const getFilesByUser = async (token,userId ,dispatch) => {
     });
     if (responce.status === 200) {
       const data = responce.data;
-      console.log(responce)
+  
       dispatch(getFilesByUserSuccess(data));
       return data;
     }
     return responce;
   } catch (error) {
     dispatch(getFilesByUserFailed(error));
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -71,3 +71,17 @@ export const addFile = async (file, token, dispatch) => {
     console.error(error);
   }
 };
+
+export const fileDownloadApi =async(fileData)=>{
+  const response = await axios.post(
+    fileDownloadUrl,
+    fileData,
+    {
+      responseType: "blob",
+    }
+  );
+  if(response.status ===200){
+    return response.data
+  }
+  return null
+}

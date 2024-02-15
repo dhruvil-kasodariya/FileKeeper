@@ -7,6 +7,6 @@ const uploadStorage = require("../middleware/uploadStorage");
 router.post("/add-file", verifyToken ,uploadStorage.single("file"), addFile);
 router.get("/get-user-files/:userId",verifyToken,getUserFiles);
 router.delete("/delete-file/:fileId",verifyToken,deleteUserFile);
-router.get('/download', downloadFile);
+router.post('/download', downloadFile);
 
 module.exports = router;

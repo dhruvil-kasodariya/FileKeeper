@@ -25,7 +25,6 @@ export const fileReducer = (state = INITIAL_STATE, action) => {
       };
 
     case FILE_ACTION_TYPE.ADD_FILE_BY_USER_SUCCESS:
-      console.log("payload",payload)
       return {
         ...state,
         fileList: [...state.fileList, payload],
