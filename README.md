@@ -39,7 +39,7 @@ yarn
 2.Create a .env file in the server directory and define the following variables:
 
   ```plaintext
-   PORT=5000
+   PORT=4000
    MONGO_URL=<your-mongodb-connection-string>
    JWT_KEY=<your-jwt-secret-key>
    PASSWORD_KEY=<your-password-encryption-key>
