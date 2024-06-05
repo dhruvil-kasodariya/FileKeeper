@@ -1,6 +1,6 @@
 # File Keeper
 
-File Keeper is a web application that allows users to securely upload, manage, and download files. It provides functionalities such as user authentication, file upload, file listing, file deletion, and file download with a 6-digit code verification.
+File Keeper is a web application that allows users to securely upload, manage, and download files. It provides functionalities such as user authentication, file upload, file listing, file deletion, and file download.
 
 ## Technologies Used
 
