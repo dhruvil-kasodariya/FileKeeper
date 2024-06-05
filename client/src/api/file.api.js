@@ -60,7 +60,7 @@ export const addFile = async (file, token, dispatch) => {
       },
     });
     if (response.status == 201) {
-      toast.info(`save the code: ${response.data.code}`)
+      toast.success(`save the code: ${response.data.originalname}`)
       const data =response.data
       dispatch(addFileSuccess(data));
       
@@ -77,7 +77,7 @@ export const fileDownloadApi =async(fileData)=>{
     fileDownloadUrl,
     fileData,
     {
-      responseType: "blob",
+      responseType: "base64",
     }
   );
   if(response.status ===200){
