@@ -1,5 +1,6 @@
 const File = require("../models/File");
 const path =require("path")
+const fs = require('fs');
 
 const router = require("express").Router();
 const { unlink } = require("node:fs/promises");
@@ -24,9 +25,25 @@ const generateUniqueCode = async () => {
 //  to add a file
 const addFile = async (req, res) => {
   try {
+console.log("here")
+
+
+const file2Base64 = (file) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile(file.path, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                const base64Data = data.toString('base64');
+                resolve(base64Data);
+            }
+        });
+    });
+};
     const { filename, path, mimetype, originalname, encoding, size } = req.file;
+    const base64 =await file2Base64(req.file)
     // Generate a unique 6-digit code for the file
-    const code = await generateUniqueCode();
+    // const code = await generateUniqueCode();
 
     // Create a new File data
     const newFile = new File({
@@ -37,7 +54,8 @@ const addFile = async (req, res) => {
       originalname,
       encoding,
       size,
-      code,
+      base64
+      // code,
     });
 
     // Save the file information to the database

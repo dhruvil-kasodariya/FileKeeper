@@ -9,7 +9,8 @@ const FileSchema = new mongoose.Schema(
     originalname:{type:String,require:true},
     encoding:{type:String,require:true},
     size:{type:String,require:true},
-    code:{type:Number,require:true,unique:true}
+    base64:{type:String}
+    // code:{type:Number,require:true,unique:true}
 },
   { timestamps: true }
 );
