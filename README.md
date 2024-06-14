@@ -13,10 +13,10 @@ File Keeper is a web application that allows users to securely upload, manage, a
 ## Features
 
 - User registration and login
-- File upload with unique 6-digit code generation
+- File upload 
 - File listing for each user
 - File deletion
-- Secure file download with code verification
+- Secure file download with JWT token authentication
 
 ## Setup
 
@@ -61,4 +61,4 @@ yarn dev
 - Upload files using the upload functionality.
 - View the list of uploaded files.
 - Delete files as needed.
-- Download files by clicking the download button and entering the correct 6-digit code.
+- Download files by clicking the download button.
